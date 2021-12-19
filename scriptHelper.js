@@ -22,32 +22,22 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
 
         if( testInput === ""){
-            return "Empty"
+            return "All fields required"
         } else if(testInput === Number){
             return "Is a Number"
         } else if(testInput === String){
             return "Not a Number"
         }
-
-        
-        // if(testInput === Number){
-        //     return "Is a Number"
-        // } else if(testInput === String){
-        //     return "Not a Number"
-        // }
-
 };
 
 
-// copilot, fuelLevel, cargoLevel
-
-// || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoLevel.value) === "Empty"
-
-function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
 
 
-if(validateInput(pilot.value) === "Empty" ){
-    alert("Empty")
+function formSubmission(document, event, pilot, copilot, fuelLevel, cargoLevel) {
+
+
+if(validateInput(pilot.value) === "All fields required" || validateInput(copilot.value) === "All fields required" || validateInput(fuelLevel.value) === "All fields required" || validateInput(cargoLevel.value) === "All fields required"){
+    alert("All fields required")
 }
 
 if(validateInput(pilot.value) === "is a Number" || validateInput(copilot.value) === "is a Number"){
@@ -101,6 +91,9 @@ function pickPlanet(planets) {
     
     return planets[planet];
 };
+
+
+// (2) Often, when submitting the form with invalid data, nothing happens; no alerts pop up and the bottom box on the page doesn't change. I think part of this is due to (1). Another thing that might help this is that you'll want to add an event parameter to formSubmission(), and pass the event as an argument when calling formSubmission() from the script. Then, you should call event.preventDefault() whenever the user enters invalid data.
 
 
 module.exports.addDestinationInfo = addDestinationInfo;

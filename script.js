@@ -12,7 +12,7 @@ window.addEventListener("load", function() {
         let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
         let cargoLevelInput = document.querySelector("input[name=cargoMass]");
 
-        formSubmission(document, pilotInput, copilotInput, fuelLevelInput, cargoLevelInput)
+        formSubmission(document, event, pilotInput, copilotInput, fuelLevelInput, cargoLevelInput)
     });
     
 // Get all of the releveant form div 
