@@ -23,9 +23,9 @@ function validateInput(testInput) {
 
         if( testInput === ""){
             return "All fields required"
-        } else if(testInput === Number){
-            return "Is a Number"
-        } else if(testInput === String){
+        } else if(isNaN(testInput) === false){
+            return "is a Number"
+        } else if(isNaN(testInput) === true){
             return "Not a Number"
         }
 };
@@ -38,13 +38,19 @@ function formSubmission(document, event, pilot, copilot, fuelLevel, cargoLevel) 
 
 if(validateInput(pilot.value) === "All fields required" || validateInput(copilot.value) === "All fields required" || validateInput(fuelLevel.value) === "All fields required" || validateInput(cargoLevel.value) === "All fields required"){
     alert("All fields required")
+    event.preventDefault();
 }
+
 
 if(validateInput(pilot.value) === "is a Number" || validateInput(copilot.value) === "is a Number"){
     alert("Is a number")
-} else if(validateInput(fuelLevel.value) === "not a number" || validateInput(cargoLevel.value) === "not a number"){
+    event.preventDefault();
+} else if(validateInput(fuelLevel.value) === "Not a Number" || validateInput(cargoLevel.value) === "Not a Number"){
     alert("Not a number")
+    event.preventDefault();
 }
+
+
 
 
 document.getElementById("pilotStatus").innerHTML = `${pilot.value} is ready for Liftoff`
@@ -52,25 +58,30 @@ document.getElementById("copilotStatus").innerHTML = `${copilot.value} is ready 
 
 
 
-if(fuelLevel < 10,000){
+if(Number(fuelLevel.value) < 10000){
     document.getElementById("fuelStatus").innerHTML = "Not Enough Fuel"
     document.getElementById("faultyItems").style.visibility = "visible"
     document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
     document.getElementById("launchStatus").style.color = "red"
+    event.preventDefault();
 }
 
-if(cargoLevel > 10,000){
+
+if(Number(cargoLevel.value) > 10000){
     document.getElementById("launchStatusCheck").style.visibility = "visible"
     document.getElementById("cargoStatus").innerHTML = "Too Much Mass For Shuttle Take Off"
     document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
     document.getElementById("launchStatus").style.color = "red"
+    event.preventDefault();
 }
-    
-if(fuelLevel >= 10,000 & cargoLevel <= 10,000){
+
+
+
+if(Number(fuelLevel.value) >= 10000 & Number(cargoLevel.value) <= 10000){
     document.getElementById("launchStatus").innerHTML = "Ready For Liftoff"
     document.getElementById("launchStatus").style.color = "green"
+    event.preventDefault();
  }
-
 
 }
 
