@@ -80,7 +80,8 @@ if(Number(cargoLevel.value) > 10000){
 if(Number(fuelLevel.value) >= 10000 & Number(cargoLevel.value) <= 10000){
     document.getElementById("launchStatus").innerHTML = "Ready For Liftoff"
     document.getElementById("launchStatus").style.color = "green"
-    event.preventDefault();
+    document.getElementById("cargoStatus").innerHTML = "Cargo is ready"
+    document.getElementById("fuelStatus").innerHTML = "Fuel is ready"
  }
 
 }
